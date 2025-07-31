@@ -21,15 +21,15 @@ Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 SoftwareSerial softSerial(SOFT_RX, SOFT_TX);
 
 // WiFi配置
-const char* ssid = "荣耀Magic6";
-const char* pswd = "1111IIll";
+const char* ssid = "你的WIFI名称"; //和上位机连接时，保证ESP8266和其处在同一网络下
+const char* pswd = "你的WIFI密码";
 
-// 云平台配置
+// 新大陆 云平台配置
 const char* server = "ndp.nlecloud.com";
 const int port = 8600;
-const char* deviceId = "seedStorge";
-const char* deviceKey = "33b641356c3942cc936e9ac5f4db7372";
-const char* websocketPath = "/ws/device/1290009";  // 修正WebSocket路径
+const char* deviceId = "你的设备ID";
+const char* deviceKey = "你的设备密钥";
+const char* websocketPath = "你的设备路径"; 
 
 // QT TCP服务器配置
 WiFiServer qtServer(8080);  // 为QT上位机创建TCP服务器
@@ -121,9 +121,9 @@ void readSerialData() {
       lastRFID.trim(); // 去除可能的空白字符
       
       // 确定操作类型
-      if(lastRFID == "E600B701") {
+      if(lastRFID == "你的入库卡片ID") {
         lastAction = "In";
-      } else if(lastRFID == "C5AA3F02") {
+      } else if(lastRFID == "你的出库卡片ID") {
         lastAction = "OUT";
       } else {
         lastAction = "No Idea";
